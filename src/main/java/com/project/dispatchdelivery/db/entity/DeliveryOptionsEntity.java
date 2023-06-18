@@ -1,4 +1,7 @@
 package com.project.dispatchdelivery.db.entity;
 
-public class DeliveryOptionsEntity {
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("DeliveryOptions")
+public record DeliveryOptionsEntity (){
 }

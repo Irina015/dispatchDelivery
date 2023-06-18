@@ -1,4 +1,7 @@
 package com.project.dispatchdelivery.db.entity;
 
-public class DeliverPackageEntity {
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("DeliverPackage")
+public record DeliverPackageEntity (){
 }

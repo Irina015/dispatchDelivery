@@ -1,4 +1,7 @@
 package com.project.dispatchdelivery.db.entity;
 
-public class CustomerEntity {
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("Customer")
+public record CustomerEntity (){
 }

@@ -1,4 +1,7 @@
 package com.project.dispatchdelivery.db.entity;
 
-public class CargoEntity {
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("Cargo")
+public record CargoEntity (){
 }
