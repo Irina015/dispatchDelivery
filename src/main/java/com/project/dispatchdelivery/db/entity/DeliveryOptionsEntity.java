@@ -4,7 +4,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Date;
 
-@Table("DeliveryOptions")
+@Table("delivery_options")
 public record DeliveryOptionsEntity (
         String deliveryType,
         String serviceType,

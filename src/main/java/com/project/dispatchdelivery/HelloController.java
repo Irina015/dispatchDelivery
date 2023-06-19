@@ -10,6 +10,6 @@ public class HelloController {
     @GetMapping("/hello")
     public String sayHello() {
         System.out.println("springboot started");
-        return "springboot started";
+        return "hello world";
     }
 }
