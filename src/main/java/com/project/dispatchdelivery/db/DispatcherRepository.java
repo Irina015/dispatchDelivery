@@ -1,4 +1,4 @@
 package com.project.dispatchdelivery.db;
 
-public interface DeliverPackage {
+public interface DispatcherRepository {
 }
