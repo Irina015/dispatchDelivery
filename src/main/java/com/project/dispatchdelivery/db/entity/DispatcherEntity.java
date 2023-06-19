@@ -1,10 +1,11 @@
 package com.project.dispatchdelivery.db.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("Dispatcher")
+@Table("dispatcher")
 public record DispatcherEntity(
-        int dispatcherId,
+        @Id int dispatcherId,
         String longtitue,
         String latitute
 ) {
