@@ -20,10 +20,12 @@ CREATE TABLE users
 CREATE TABLE orders
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
     from_location VARCHAR(255),
     to_location VARCHAR(255),
     pickup_date VARCHAR(255),
-    delivery_date VARCHAR(255)
+    delivery_date VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE authorities
