@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS shopping_cart;
 DROP TABLE IF EXISTS cargo;
+DROP TABLE IF EXISTS packages;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS users;
 
@@ -26,6 +27,17 @@ CREATE TABLE orders
     pickup_date VARCHAR(255),
     delivery_date VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE packages
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    weight VARCHAR(255),
+    height VARCHAR(255),
+    width VARCHAR(255),
+    length VARCHAR(255),
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE authorities
