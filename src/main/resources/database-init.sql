@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS shopping_cart;
 DROP TABLE IF EXISTS cargo;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS orders;
 
 CREATE TABLE users
 (
@@ -14,6 +15,11 @@ CREATE TABLE users
     password VARCHAR(100) NOT NULL,
     email_address VARCHAR(100),
     enabled  TINYINT      NOT NULL DEFAULT 1
+);
+
+CREATE TABLE orders
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
 );
 
 CREATE TABLE authorities
