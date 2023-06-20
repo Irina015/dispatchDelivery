@@ -6,6 +6,10 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("orders")
 public record OrderEntity(
-        @Id int id
+        @Id int id,
+        String fromLocation,
+        String toLocation,
+        String pickupDate,
+        String deliveryDate
 ) {
 }

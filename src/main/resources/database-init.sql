@@ -19,7 +19,11 @@ CREATE TABLE users
 
 CREATE TABLE orders
 (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    from_location VARCHAR(255),
+    to_location VARCHAR(255),
+    pickup_date VARCHAR(255),
+    delivery_date VARCHAR(255)
 );
 
 CREATE TABLE authorities
