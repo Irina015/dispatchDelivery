@@ -6,7 +6,8 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("orders")
 public record OrderEntity(
-        @Id int id,
+        @Id Long id,
+        Long userId,
         String fromLocation,
         String toLocation,
         String pickupDate,
