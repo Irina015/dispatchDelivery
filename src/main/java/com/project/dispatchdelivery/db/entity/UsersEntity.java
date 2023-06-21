@@ -5,7 +5,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("users")
 public record UsersEntity(
-        @Id int id,
+        @Id Long id,
         String username,
         String firstName,
         String lastName,
