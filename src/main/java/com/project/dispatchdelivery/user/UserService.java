@@ -22,7 +22,7 @@ public class UserService {
     }
 
 
-    public void register(String username, String password, String firstName, String lastName) {
+    public void register(String username, String password,String firstName, String lastName, String phoneNumber, String emailAddress) {
         UserDetails user = User.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
@@ -30,6 +30,7 @@ public class UserService {
                 .build();
         userDetailsManager.createUser(user);
         usersRepository.updateNameByUsername(username, firstName, lastName);
+        usersRepository.updatePhoneEmailByUsername(username, phoneNumber, emailAddress);
     }
 
 

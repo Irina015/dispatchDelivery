@@ -10,10 +10,10 @@ CREATE TABLE users
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     phone_number VARCHAR(255),
-    password VARCHAR(100) NOT NULL,
     email_address VARCHAR(100),
     enabled  TINYINT      NOT NULL DEFAULT 1
 );

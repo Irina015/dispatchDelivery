@@ -15,4 +15,8 @@ public interface UsersRepository extends ListCrudRepository<UsersEntity, Long> {
     @Modifying
     @Query("UPDATE users SET first_name = :firstName, last_name = :lastName WHERE username = :username")
     void updateNameByUsername(String username, String firstName, String lastName);
+
+    @Modifying
+    @Query("UPDATE users SET phone_number = :phoneNumber, email_address = :emailAddress WHERE username = :username")
+    void updatePhoneEmailByUsername(String username, String phoneNumber, String emailAddress);
 }
