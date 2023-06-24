@@ -26,13 +26,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '0.11.0'
     // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
-    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.2.5.Final'
+    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.0.0.Final'
 
     // data faker
     implementation 'com.github.javafaker:javafaker:1.0.2'
 
     // spring framework
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

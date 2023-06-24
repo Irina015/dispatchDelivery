@@ -3,17 +3,16 @@ package com.project.dispatchdelivery.db;
 import com.project.dispatchdelivery.db.entity.User;
 import com.project.dispatchdelivery.db.entity.UsersEntity;
 import com.project.dispatchdelivery.db.request.userRequest.UserRegisterRequest;
-import com.project.dispatchdelivery.db.response.userResponse.GetCustomerResponse;
+import com.project.dispatchdelivery.db.response.GetCustomerResponse;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jdbc.repository.query.Modifying;
-import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory;
-
-
+import org.hibernate.query.Query;
 
 import java.util.List;
+
+
 @Repository
 public class UsersRepository  {
     @Autowired
@@ -27,6 +26,7 @@ public class UsersRepository  {
         user.setFirstName(userRegisterRequest.getFirstName());
         user.setLastName(userRegisterRequest.getLastName());
         user.setPassword(userRegisterRequest.getPassword());
+        user.setPassword(userRegisterRequest.getPhoneNumber());
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -100,8 +100,30 @@ public class UsersRepository  {
         return dbuser;
     }
 
+    public UsersEntity checkUserPassword(String email, String password) {
+        Session session = null;
+        UsersEntity customer = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            // String hql = "from UsersEntity c where c.email=:e and c.password=:w";
+            Query query = session.createQuery("from UsersEntity.class c where c.email=:e and c.password=:w", UsersEntity.class);
+            query.setParameter("e",email);
+            query.setParameter("w",password);
+            List<UsersEntity> list = query.list();
+            System.out.println(list.size());
+            if (list.size()!=0){
+                customer = list.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-//    @Modifying
+        return customer;
+    }
+
+
+ //   @Modifying
 //    @Query("UPDATE users SET phone_number = :phoneNumber, email_address = :emailAddress WHERE username = :username")
 //    void updatePhoneEmailByUsername(String username, String phoneNumber, String emailAddress);
 }

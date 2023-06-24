@@ -12,7 +12,7 @@ public class OrderController {
     private final OrderService orderService;
 
     //hardcode user for temp use, will be replaced in the future
-    private final UsersEntity userEntity = new UsersEntity(1L,"user0","Foo", "Bar","1001001000","12345","123@gmail.com");
+   private final UsersEntity userEntity = new UsersEntity(1L,"user0","12345","Foo", "Bar","1001001000","123@gmail.com");
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;

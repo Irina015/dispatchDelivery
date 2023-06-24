@@ -4,21 +4,23 @@ import com.project.dispatchdelivery.db.UsersRepository;
 import com.project.dispatchdelivery.db.entity.User;
 import com.project.dispatchdelivery.db.entity.UsersEntity;
 import com.project.dispatchdelivery.db.request.userRequest.UserRegisterRequest;
-import com.project.dispatchdelivery.db.response.userResponse.UserResponse;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.UserDetailsManager;
+import com.project.dispatchdelivery.db.response.UserResponse;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Service
 public class UserService {
-    private final UserDetailsManager userDetailsManager;
-    private final PasswordEncoder passwordEncoder;
     private final UsersRepository usersRepository;
 
     // constructor
-    public UserService(UserDetailsManager userDetailsManager, PasswordEncoder passwordEncoder, UsersRepository usersRepository) {
-        this.userDetailsManager = userDetailsManager;
-        this.passwordEncoder = passwordEncoder;
+    public UserService(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
 
@@ -83,4 +85,12 @@ public class UserService {
         }
         return userResponse;
     }
+
+    // check password whether is correct
+    public User checkUserPassword(String email, String password) {
+        UsersEntity customer = usersRepository.checkUserPassword(email, password);
+        return new User(customer.getEmailAddress(), customer.getLastName(),
+                String.valueOf(customer.getId()), customer.getFirstName(), customer.getPhoneNumber());
+    }
+
 }
