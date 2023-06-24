@@ -6,7 +6,8 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.Entity;
 
-@Table("orders")
+@Entity
+@Table(name = "orders")
 public record OrderEntity(
         @Id Long id,
         Long userId,

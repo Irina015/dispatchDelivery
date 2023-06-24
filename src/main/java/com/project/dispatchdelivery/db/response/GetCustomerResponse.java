@@ -1,4 +1,4 @@
-package com.project.dispatchdelivery.db.response.userResponse;
+package com.project.dispatchdelivery.db.response;
 
 import com.project.dispatchdelivery.db.entity.User;
 import lombok.*;
