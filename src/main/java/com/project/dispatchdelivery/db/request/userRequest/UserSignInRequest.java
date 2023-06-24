@@ -1,11 +1,8 @@
 package com.project.dispatchdelivery.db.request.userRequest;
 
-import lombok.*;
-@Getter
-@Setter
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
+
+import lombok.ToString;
+
 @ToString
 public class UserSignInRequest {
         private String email;

@@ -1,19 +1,12 @@
 package com.project.dispatchdelivery.user;
 
 import com.project.dispatchdelivery.db.UsersRepository;
+import com.project.dispatchdelivery.db.response.GetCustomerResponse;
 import com.project.dispatchdelivery.db.entity.User;
 import com.project.dispatchdelivery.db.entity.UsersEntity;
 import com.project.dispatchdelivery.db.request.userRequest.UserRegisterRequest;
 import com.project.dispatchdelivery.db.response.UserResponse;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import javax.sql.DataSource;
-import java.util.Properties;
 
 @Service
 public class UserService {
@@ -91,6 +84,27 @@ public class UserService {
         UsersEntity customer = usersRepository.checkUserPassword(email, password);
         return new User(customer.getEmailAddress(), customer.getLastName(),
                 String.valueOf(customer.getId()), customer.getFirstName(), customer.getPhoneNumber());
+    }
+
+    public GetCustomerResponse getCustomer (int UID) {
+        UsersEntity dbuser = usersRepository.getCustomerProfile(UID);
+        User user = new User();
+        GetCustomerResponse getCustomerResponse = new GetCustomerResponse();
+        if (dbuser == null) {
+            getCustomerResponse.setMessage("get user fail.");
+            getCustomerResponse.setStatus("404");
+        } else {
+            String s = Integer.toString((int) dbuser.getId());
+            user.setUID(s);
+            user.setLastName(dbuser.getLastName());
+            user.setFirstName(dbuser.getFirstName());
+            user.setEmail(dbuser.getEmailAddress());
+            user.setPhone(dbuser.getPhoneNumber());
+            getCustomerResponse.setMessage("get user success.");
+            getCustomerResponse.setUser(user);
+            getCustomerResponse.setStatus("200");
+        }
+        return getCustomerResponse;
     }
 
 }

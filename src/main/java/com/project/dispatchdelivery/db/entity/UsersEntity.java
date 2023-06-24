@@ -1,78 +1,71 @@
 package com.project.dispatchdelivery.db.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
+
 import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
 @Table(name = "users")
-public class UsersEntity implements Serializable {
+public class UsersEntity {
 
-        private static final long serialVersionUID = 7596499365251992523L;
 
         @Id
-        @GeneratedValue(strategy = GenerationType.SEQUENCE)
-        private long id;
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id")
+        private int id;
 
-
-        private String username;
+        @Column(name = "authorities")
         private String authorities;
+        @Column(name = "password")
         private String password;
 
-
+        @Column(name = "email_address")
         private String emailAddress;
 
-        @JsonProperty("first_name")
+        @Column(name = "first_name")
         private String firstName;
 
-        @JsonProperty("last_name")
+        @Column(name = "last_name")
         private String lastName;
 
-        @JsonProperty("phone_number")
+        @Column(name = "phone_number")
         private String phoneNumber;
 
-        // private List<OrderEntity> orderEntities;
-
-        @OneToMany(mappedBy = "users")
+        @OneToMany(mappedBy = "user",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+        @Fetch(value = FetchMode.SUBSELECT)
         private List<CreditCardEntity> creditCardEntities;
 
-        @OneToMany(mappedBy = "users")
+        @OneToMany(mappedBy = "user",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+        @Fetch(value = FetchMode.SUBSELECT)
         private List<OrderEntity> orderEntities;
 
-//        public User extract() {
-//                User user = new User();
-//
-//                user.setEmail(this.emailAddress);
-//                user.setLastName(lastName);
-//                user.setFirstName(firstName);
-//                user.setUID(String.valueOf(id));
-//                user.setPhone(phoneNumber);
-//                return user;
-//        }
+        public User extract() {
+                User user = new User();
+
+                user.setEmail(this.emailAddress);
+                user.setLastName(lastName);
+                user.setFirstName(firstName);
+                user.setUID(String.valueOf(id));
+                user.setPhone(phoneNumber);
+                return user;
+        }
 
         public long getId() {
                 return id;
         }
 
-        public void setId(long id) {
+        public void setId(int id) {
                 this.id = id;
         }
 
-        public String getUsername() {
-                return username;
-        }
-
-        public void setUsername(String username) {
-                this.username = username;
-        }
 
         public String getAuthorities() {
                 return authorities;
@@ -138,9 +131,8 @@ public class UsersEntity implements Serializable {
                 this.orderEntities = orderEntities;
         }
 
-        public UsersEntity(long id, String username, String password, String firstName, String lastName, String phoneNumber,String emailAddress) {
+        public UsersEntity(int id,  String password, String firstName, String lastName, String phoneNumber,String emailAddress) {
                 this.id = id;
-                this.username = username;
                 this.password = password;
 
                 this.firstName = firstName;
@@ -150,4 +142,19 @@ public class UsersEntity implements Serializable {
         }
 
         public UsersEntity(){};
+
+        @Override
+        public String toString() {
+                return "UsersEntity{" +
+                        "id=" + id +
+                        ", authorities='" + authorities + '\'' +
+                        ", password='" + password + '\'' +
+                        ", emailAddress='" + emailAddress + '\'' +
+                        ", firstName='" + firstName + '\'' +
+                        ", lastName='" + lastName + '\'' +
+                        ", phoneNumber='" + phoneNumber + '\'' +
+                        ", creditCardEntities=" + creditCardEntities +
+                        ", orderEntities=" + orderEntities +
+                        '}';
+        }
 }

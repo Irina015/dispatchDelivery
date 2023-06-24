@@ -6,6 +6,7 @@ import com.project.dispatchdelivery.db.request.userRequest.UserRegisterRequest;
 import com.project.dispatchdelivery.db.response.GetCustomerResponse;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -30,7 +31,7 @@ public class UsersRepository  {
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            session.persist(user);
+            session.save(user);
             session.getTransaction().commit();
         } catch (Exception ex){
             ex.printStackTrace();
@@ -66,6 +67,16 @@ public class UsersRepository  {
         return user;
     }
 
+    public UsersEntity getCustomerProfile(int UID){
+        GetCustomerResponse getCustomerResponse = new GetCustomerResponse();
+        UsersEntity user = null;
+        try (Session session = sessionFactory.openSession()) {
+            user = session.get(UsersEntity.class, (long)UID);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
 
     // update
     public UsersEntity updateUser(User updatedUser) {
@@ -123,7 +134,4 @@ public class UsersRepository  {
     }
 
 
- //   @Modifying
-//    @Query("UPDATE users SET phone_number = :phoneNumber, email_address = :emailAddress WHERE username = :username")
-//    void updatePhoneEmailByUsername(String username, String phoneNumber, String emailAddress);
 }

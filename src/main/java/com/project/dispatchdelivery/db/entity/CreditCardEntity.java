@@ -20,11 +20,12 @@ public class CreditCardEntity implements Serializable {
         private static final long serialVersionUID = 7964993652255519923L;
 
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id")
         private long id;
         private String holderName;
         private String cardNumber;
         private String billingAddress;
-        private String CardLabel;
         private String CVV;
         private String zip;
         private String expDate;
@@ -40,12 +41,11 @@ public class CreditCardEntity implements Serializable {
         public CreditCardEntity() {
         }
 
-        public CreditCardEntity(long id, String holderName, String cardNumber, String billingAddress, String cardLabel, String CVV, String zip, String expDate, boolean def, UsersEntity usersEntity, OrderEntity order) {
+        public CreditCardEntity(long id, String holderName, String cardNumber, String billingAddress, String CVV, String zip, String expDate, boolean def, UsersEntity usersEntity, OrderEntity order) {
                 this.id = id;
                 this.holderName = holderName;
                 this.cardNumber = cardNumber;
                 this.billingAddress = billingAddress;
-                CardLabel = cardLabel;
                 this.CVV = CVV;
                 this.zip = zip;
                 this.expDate = expDate;
@@ -84,14 +84,6 @@ public class CreditCardEntity implements Serializable {
 
         public void setBillingAddress(String billingAddress) {
                 this.billingAddress = billingAddress;
-        }
-
-        public String getCardLabel() {
-                return CardLabel;
-        }
-
-        public void setCardLabel(String cardLabel) {
-                CardLabel = cardLabel;
         }
 
         public String getCVV() {

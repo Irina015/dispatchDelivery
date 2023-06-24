@@ -3,11 +3,7 @@ package com.project.dispatchdelivery.db.request.userRequest;
 
 import lombok.*;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
+
 @ToString
 public class UserRegisterRequest {
     public String Email;
@@ -53,6 +49,15 @@ public class UserRegisterRequest {
     }
 
     public void setPassword(String password) {
+
+        Password = password;
+    }
+
+    public UserRegisterRequest(String email, String firstName, String lastName, String phoneNumber, String password) {
+        Email = email;
+        FirstName = firstName;
+        LastName = lastName;
+        this.phoneNumber = phoneNumber;
         Password = password;
     }
 }
