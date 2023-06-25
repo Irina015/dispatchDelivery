@@ -17,8 +17,8 @@ public class OrderService {
     @Transactional
     //createOrder
     public void createOrder(UsersEntity user){
-        OrderEntity newOrder = new OrderEntity(1, user.id(), "beijing", "new york", "July21", "July30");
-        orderRepository.save(newOrder);
+//        OrderEntity newOrder = new OrderEntity(1L, user.id(), "beijing", "new york", "July21", "July30");
+//        orderRepository.save(newOrder);
     }
 
     //cancelOrder

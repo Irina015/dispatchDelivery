@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("users")
 public record UsersEntity(
-        @Id int id,
+        @Id long id,
         String username,
         String password,
         @JsonProperty("first_name")
