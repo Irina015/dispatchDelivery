@@ -1,13 +1,5 @@
 package com.project.dispatchdelivery.db.response;
 
-import lombok.*;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class LogoutResponse {
     private String status;
     private String message;

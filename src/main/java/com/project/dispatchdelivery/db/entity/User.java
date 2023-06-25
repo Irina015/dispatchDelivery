@@ -1,7 +1,7 @@
 package com.project.dispatchdelivery.db.entity;
 
 
-import lombok.*;
+
 
 
 public class User {

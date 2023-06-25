@@ -1,10 +1,7 @@
 package com.project.dispatchdelivery.db.request.userRequest;
 
 
-import lombok.*;
 
-
-@ToString
 public class UserRegisterRequest {
     public String Email;
     public String FirstName;

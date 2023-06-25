@@ -1,27 +1,19 @@
 package com.project.dispatchdelivery.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-import javax.persistence.*;
+
 import java.io.Serializable;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@Entity
+
 @Table(name = "credit_card")
 public class CreditCardEntity implements Serializable {
         private static final long serialVersionUID = 7964993652255519923L;
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
         private long id;
         private String holderName;
         private String cardNumber;
@@ -31,11 +23,10 @@ public class CreditCardEntity implements Serializable {
         private String expDate;
         private boolean def = false;
 
-        @ManyToOne(fetch = FetchType.EAGER)
         @JsonIgnore
         private UsersEntity usersEntity;
 
-        @OneToOne(mappedBy = "credit_card")
+
         private OrderEntity order;
 
         public CreditCardEntity() {

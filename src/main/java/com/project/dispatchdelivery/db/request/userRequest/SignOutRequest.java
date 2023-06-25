@@ -1,12 +1,6 @@
 package com.project.dispatchdelivery.db.request.userRequest;
 
-import lombok.*;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-
-@ToString
 public class SignOutRequest {
     private String UID;
 

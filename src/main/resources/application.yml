@@ -3,14 +3,12 @@
 #    org.apache.coyote.http11.Http11InputBuffer: DEBUG # Incoming HTTP requests
 #    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE # Outgoing http requests
 #    org.springframework.jdbc.core: DEBUG # SQL
-#
-#
-#
+
 spring:
   datasource:
-    url: jdbc:mysql://dispatchdelivery-db.cf8antsrmbzm.us-west-2.rds.amazonaws.com:3306/dispatchDelivery?createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: ${DATABASE_USERNAME:admin}
-    password: ${DATABASE_PASSWORD:adminadmin}
+    url: jdbc:mysql://dispatchdelivery-db.cf8antsrmbzm.us-west-2.rds.amazonaws.com/dispatchDelivery?createDatabaseIfNotExist=true
+    username: admin
+    password: adminadmin
     driver-class-name: com.mysql.cj.jdbc.Driver
 #  sql:
 #    init:
@@ -21,6 +19,3 @@ spring:
 #  cache:
 #    caffeine:
 #      spec:
-#  jpa:
-#    hibernate:
-#      ddl-auto: create

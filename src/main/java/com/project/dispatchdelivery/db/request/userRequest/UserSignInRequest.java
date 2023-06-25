@@ -1,9 +1,6 @@
 package com.project.dispatchdelivery.db.request.userRequest;
 
 
-import lombok.ToString;
-
-@ToString
 public class UserSignInRequest {
         private String email;
         private String Password;
