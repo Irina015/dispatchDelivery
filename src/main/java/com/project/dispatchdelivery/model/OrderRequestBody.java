@@ -1,9 +1,18 @@
 package com.project.dispatchdelivery.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import com.project.dispatchdelivery.db.entity.OrderEntity;
 
 public record OrderRequestBody(
-        OrderEntity order
+        @JsonProperty("user_id")
+        Long userId,
+        @JsonProperty("from_location")
+        String fromLocation,
+        @JsonProperty("to_location")
+        String toLocation,
+        @JsonProperty("pickup_date")
+        String pickupDate,
+        @JsonProperty("delivery_date")
+        String deliveryDate
 )
 {
 

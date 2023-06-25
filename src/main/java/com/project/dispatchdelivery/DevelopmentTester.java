@@ -14,19 +14,24 @@ public class DevelopmentTester implements ApplicationRunner {
     private static final Logger logger = LoggerFactory.getLogger(DevelopmentTester.class);
 
 
-    private final UserService userService;
+    //private final UserService userService;
 
+    public DevelopmentTester(){
 
-    public DevelopmentTester(UserService userService) {
-        this.userService = userService;
     }
-
-
-
+//    public DevelopmentTester(UserService userService) {
+//        this.userService = userService;
+//    }
 
     @Override
-    public void run(ApplicationArguments args) {
-        userService.register("default", "123456", "John", "Smith", "123-123-1234", "123@gmail.com");
+    public void run(ApplicationArguments args){
+
     }
+
+
+//    @Override
+//    public void run(ApplicationArguments args) {
+//        userService.register("default", "123456", "John", "Smith", "123-123-1234", "123@gmail.com");
+//    }
 
 }

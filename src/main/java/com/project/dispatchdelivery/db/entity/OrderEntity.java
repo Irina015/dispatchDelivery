@@ -8,6 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("orders")
 public record OrderEntity(
         @Id Long id,
+
         Long userId,
         @JsonProperty("from_location")
         String fromLocation,

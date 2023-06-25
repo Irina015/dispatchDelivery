@@ -17,7 +17,7 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(value = HttpStatus.OK)
-    public void register(@RequestBody RegisterBody body) {
+    public void register(@RequestBody() RegisterBody body) {
         userService.register(body.username(), body.password(), body.firstName(), body.lastName(), body.phoneNumber(), body.emailAddress());
     }
 }
