@@ -23,5 +23,8 @@ public class OrderService {
     }
 
     //cancelOrder
-
+    public void cancelOrder(UsersEntity user, OrderRequestBody body){
+        OrderEntity order = orderRepository.findAllByUserId(body.userId());
+        orderRepository.delete(order);
+    }
 }

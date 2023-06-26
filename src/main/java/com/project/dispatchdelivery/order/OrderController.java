@@ -34,10 +34,15 @@ public class OrderController {
         }
     }
 
-//    @DeleteMapping
-//    public void unsetFavoriteItem(@AuthenticationPrincipal User user, @RequestBody OrderRequestBody body) {
-//        UsersEntity userEntity = userService.findByUsername(user.getUsername());
-//        orderService.cancelOrder(userEntity, body);
-//    }
+    @DeleteMapping
+    public void cancelOrder(@AuthenticationPrincipal User user, @RequestBody OrderRequestBody body) {
+        UsersEntity userEntity = userService.findByUsername(user.getUsername());
+        try{
+            orderService.cancelOrder(userEntity, body);
+        } catch (DbActionExecutionException e){
+            throw e;
+        }
+
+    }
 
 }

@@ -6,4 +6,5 @@ import org.springframework.data.repository.ListCrudRepository;
 public interface OrderRepository extends ListCrudRepository<OrderEntity, Long> {
     //add search order by userid
     //add delete query (need to use @Modifying annotation
+    OrderEntity findAllByUserId(Long userId);
 }
