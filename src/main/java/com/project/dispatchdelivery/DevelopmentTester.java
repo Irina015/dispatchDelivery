@@ -29,12 +29,6 @@ public class DevelopmentTester implements ApplicationRunner {
     @Override
 
     public void run(ApplicationArguments args) {
-        userService.register("default", "123456", "John", "Smith", "123-456-7890", "john@gmail.com");
-        userService.register("admin", "123456", "Mary", "Smith", "123-456-7890", "mary@gmail.com");
-        userService.register("user1", "123456", "Joe", "Smith", "123-456-7890", "joe@gmail.com");
-        userService.register("user2", "123456", "Juan", "Smith", "123-456-7890", "juan@gmail.com");
-        userService.register("user3", "123456", "Lin", "Smith", "123-456-7890", "lin@gmail.com");
-
 
     }
 

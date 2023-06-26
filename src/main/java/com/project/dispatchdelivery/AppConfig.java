@@ -37,30 +37,6 @@ public class AppConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .authorizeHttpRequests(auth ->
-                        auth
-                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers(HttpMethod.GET, "/", "/index.html", "/*.json", "/*.png", "/static/**").permitAll()
-                                .requestMatchers("/hello/**").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/login", "/register", "/logout").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/createOrder").permitAll()
-                                .anyRequest().authenticated()
-                )
-                .exceptionHandling()
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-                .and()
-                .formLogin()
-                .successHandler((req, res, auth) -> res.setStatus(HttpStatus.NO_CONTENT.value()))
-                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
-                .and()
-                .logout()
-                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.NO_CONTENT));
-        return http.build();
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -72,7 +48,7 @@ public class AppConfig {
                                 .requestMatchers(HttpMethod.GET, "/", "/index.html", "/*.json", "/*.png", "/static/**").permitAll()
                                 .requestMatchers("/hello/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/login", "/register", "/payment","/order","/logout").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/recommendation", "/game").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/recommendation").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .exceptionHandling()

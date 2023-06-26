@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/order")
 public class OrderController {
     private final OrderService orderService;
     private final UserService userService;
@@ -22,7 +23,7 @@ public class OrderController {
     }
 
 
-    @PostMapping ("/createOrder")
+    @PostMapping
     public void createOrder(@AuthenticationPrincipal User user, @RequestBody OrderRequestBody body){
         UsersEntity userEntity = userService.findByUsername(user.getUsername());
         try {
@@ -31,6 +32,12 @@ public class OrderController {
         } catch (DbActionExecutionException e) {
             throw e;
         }
-        //need to get this newOrder info from request body:
     }
+
+//    @DeleteMapping
+//    public void unsetFavoriteItem(@AuthenticationPrincipal User user, @RequestBody OrderRequestBody body) {
+//        UsersEntity userEntity = userService.findByUsername(user.getUsername());
+//        orderService.cancelOrder(userEntity, body);
+//    }
+
 }

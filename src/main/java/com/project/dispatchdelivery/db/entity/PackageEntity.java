@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("package")
-public record Package(
+public record PackageEntity(
         @Id Long id,
         Long orderId,
         String weight,
