@@ -20,6 +20,7 @@ public class OrderService {
     public void createOrder(UsersEntity user, OrderRequestBody body){
         OrderEntity newOrder = new OrderEntity(null, user.id(), body.fromLocation(), body.toLocation(), body.pickupDate(), body.deliveryDate());
         orderRepository.save(newOrder);
+
     }
 
     //cancelOrder

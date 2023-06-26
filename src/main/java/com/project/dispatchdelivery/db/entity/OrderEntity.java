@@ -5,10 +5,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 
-@Table("orders")
-public record OrderEntity(
-        @Id Long id,
 
+
+@Table(name = "orders")
+public record OrderEntity(
+
+        @Id Long id,
         Long userId,
         @JsonProperty("from_location")
         String fromLocation,

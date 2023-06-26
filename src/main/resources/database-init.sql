@@ -1,5 +1,10 @@
-DROP TABLE IF EXISTS pizhu;
-
+DROP TABLE IF EXISTS authorities;
+DROP TABLE IF EXISTS shopping_cart;
+DROP TABLE IF EXISTS cargo;
+DROP TABLE IF EXISTS packages;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS payment;
 
 
 --
@@ -77,3 +82,15 @@ DROP TABLE IF EXISTS pizhu;
 --     UNIQUE KEY unique_package_and_user_combo (delivery_package_id, user_id)
 -- );
 --
+CREATE TABLE payment
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    card_number VARCHAR(100),
+    holder_name VARCHAR(100),
+    expired_date VARCHAR(100),
+    cvv VARCHAR(100),
+    billing_address VARCHAR(100),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zip_code VARCHAR(100)
+);
