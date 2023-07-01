@@ -23,10 +23,16 @@ CREATE TABLE orders
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
-    from_location VARCHAR(255),
-    to_location VARCHAR(255),
-    pickup_date VARCHAR(255),
-    delivery_date VARCHAR(255),
+    sender_address VARCHAR(255),
+    sender_city VARCHAR(255),
+    sender_state VARCHAR(255),
+    sender_email VARCHAR(255),
+    sender_phone VARCHAR(255),
+    receiver_address VARCHAR(255),
+    receiver_city VARCHAR(255),
+    receiver_state VARCHAR(255),
+    receiver_email VARCHAR(255),
+    receiver_phone VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

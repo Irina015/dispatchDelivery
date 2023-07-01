@@ -1,6 +1,5 @@
 package com.project.dispatchdelivery.db.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -12,13 +11,15 @@ public record OrderEntity(
 
         @Id Long id,
         Long userId,
-        @JsonProperty("from_location")
-        String fromLocation,
-        @JsonProperty("to_location")
-        String toLocation,
-        @JsonProperty("pickup_date")
-        String pickupDate,
-        @JsonProperty("delivery_date")
-        String deliveryDate
+        String senderAddress,
+        String senderCity,
+        String senderState,
+        String senderEmail,
+        String senderPhone,
+        String receiverAddress,
+        String receiverCity,
+        String receiverState,
+        String receiverEmail,
+        String receiverPhone
 ) {
 }

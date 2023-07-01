@@ -1,7 +1,7 @@
 package com.project.dispatchdelivery.order;
 
 import com.project.dispatchdelivery.db.entity.UsersEntity;
-import com.project.dispatchdelivery.model.OrderRequestBody;
+import com.project.dispatchdelivery.model.orderModel.OrderRequestBody;
 import com.project.dispatchdelivery.user.UserService;
 import org.springframework.data.relational.core.conversion.DbActionExecutionException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
